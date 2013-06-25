@@ -1,3 +1,9 @@
+<head>
+    <link rel="stylesheet" href="../../lib/leaflet/leaflet.css" />
+    <!--[if lt IE 9]>
+     <link rel="stylesheet" href="lib/leaflet/leaflet.ie.css"/>
+     <![endif]-->
+</head>
 <div class="row-fluid">
 
     <form class="form-horizontal span12">
@@ -51,6 +57,19 @@
 
                         <div class="controls">
                             <input type="text" id="region" name="region" value="<%= region %>"/>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="wkt" class="control-label">WKT:</label>
+
+                        <div class="controls">
+                            <input type="text" id="wkt" name="wkt" value="<%= wkt %>"/>
+                            <div id="map">
+                            <script src="../../lib/leaflet/leaflet-src.js"></script>
+                            <script src="../../lib/proj4js-compressed.js"></script>
+                            <script src="../../src/proj4leaflet.js"></script>
+                            <script src="http://www.mapuse.com/billing/Client/v1/Leaflet.js"></script>
                         </div>
                     </div>
 
