@@ -1,8 +1,16 @@
+// Taken from http://stackoverflow.com/questions/14299198/how-to-integrate-js-leaflet-with-backbone-js
+
+<script type='template' id='map-template'>
+   <div id="map"></div>
+</script>
+
 window.WineView = Backbone.View.extend({
 
     initialize: function () {
         this.render();
     },
+
+    template: _.template($('#map-template').html()),
 
     render: function () {
         $(this.el).html(this.template(this.model.toJSON()));
@@ -31,7 +39,7 @@ window.WineView = Backbone.View.extend({
             ]
         });
 
-    var map = new L.Map('map', {
+    var map = new L.Map(this.$('#map')[0], {
         crs: crs,
         scale: function(zoom) {
             return 1 / res[zoom];
