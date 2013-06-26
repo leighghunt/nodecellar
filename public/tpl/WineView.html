@@ -65,7 +65,10 @@
 
                         <div class="controls">
                             <input type="text" id="wkt" name="wkt" value="<%= wkt %>"/>
-                            <div id="map">
+                            <!-- Taken from http://stackoverflow.com/questions/14299198/how-to-integrate-js-leaflet-with-backbone-js-->
+                            <script type='template' id='map-template'>
+                               <div id="map"></div>
+                            </script>
                             <script src="../../lib/leaflet/leaflet-src.js"></script>
                             <script src="../../lib/proj4js-compressed.js"></script>
                             <script src="../../src/proj4leaflet.js"></script>

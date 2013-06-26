@@ -1,9 +1,3 @@
-// Taken from http://stackoverflow.com/questions/14299198/how-to-integrate-js-leaflet-with-backbone-js
-
-<script type='template' id='map-template'>
-   <div id="map"></div>
-</script>
-
 window.WineView = Backbone.View.extend({
 
     initialize: function () {
