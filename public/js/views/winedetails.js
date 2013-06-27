@@ -7,7 +7,6 @@ window.WineView = Backbone.View.extend({
     render: function () {
         $(this.el).html(this.template(this.model.toJSON()));
 
-    var map = L.map(this.$('#map')[0]).setView ([-41.289926, 174.775172], 16);
 
 /*
     L.tileLayer('http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/100725/256/{z}/{x}/{y}.png', {
@@ -40,6 +39,8 @@ window.WineView = Backbone.View.extend({
             ]
         });
 
+//    var map = L.map(this.$('#map')[0]).setView ([-41.289926, 174.775172], 16);
+
     var map = new L.Map(this.$('#map')[0], {
         crs: crs,
         scale: function(zoom) {
@@ -61,7 +62,7 @@ window.WineView = Backbone.View.extend({
         });
 
     map.addLayer(tilelayer);
-    //map.setView([-41.288889, 174.777222], 13);
+    map.setView([-41.289926, 174.775172], 16);
 
     function onMapMouseMove(e) {
     //  console.log("xy: " + e.latlng);
