@@ -15,6 +15,23 @@ window.WineView = Backbone.View.extend({
     }).addTo(map);
 */
 
+var origin_CommunityBasemap = [-4020900, 19998100];
+var origin_WCCAerials = [-5099531.19635, 57089446.18];
+
+var resolutions_WCCAerials: [
+            66.1459656252646,
+            33.0729828126323,
+            16.933367200067735,
+            8.466683600033868,
+            4.233341800016934,
+            2.116670900008467,
+            1.0583354500042335,
+            0.5291677250021167,
+            0.26458386250105836,
+            0.13229193125052918,
+            0.06614596562526459
+        ]
+
 var resolutions_CommunityBasemap = [
               4233.341800016934, 
               2116.670900008467, 
@@ -34,10 +51,15 @@ var resolutions_CommunityBasemap = [
                  0.6614596562526459
             ];
 
+var minZoom_CommunityBasemap = 0;
+var minZoom_WCCAerials = 0;
+var maxZoom_CommunityBasemap = 15;
+var maxZoom_WCCAerials = 10;
+
     var crs = new L.Proj.CRS('EPSG:2193',
         '+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs',
         {
-            origin: [-4020900, 19998100],
+            origin: origin_CommunityBasemap,
             resolutions: resolutions_CommunityBasemap
         });
 
@@ -52,14 +74,14 @@ var resolutions_CommunityBasemap = [
         worldCopyJump: false
     });
 
-    var tileUrlCommunityBasemap = 'http://services.arcgisonline.co.nz/arcgis/rest/services/Generic/newzealand/MapServer/tile/{z}/{y}/{x}',
-        attrib = 'Eagle Technology Group Ltd And LINZ &copy; 2012',
+    var tileUrl_CommunityBasemap = 'http://services.arcgisonline.co.nz/arcgis/rest/services/Generic/newzealand/MapServer/tile/{z}/{y}/{x}',
+        attrib_CommunityBasemap = 'Eagle Technology Group Ltd And LINZ &copy; 2012',
 
-        tilelayer = new L.TileLayer(tileUrlCommunityBasemap, {
-            maxZoom: 15,
-            minZoom: 0,
+        tilelayer = new L.TileLayer(tileUrl_CommunityBasemapnityBasemap, {
+            maxZoom: maxZoom_CommunityBasemap,
+            minZoom: minZoom_CommunityBasemap,
             continuousWorld: true,
-            attribution: attrib,
+            attribution: attrib_CommunityBasemap,
             tms: false
         });
 
