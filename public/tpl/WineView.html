@@ -1,9 +1,11 @@
 <head>
-    <link rel="stylesheet" href="../../lib/leaflet/leaflet.css" />
-    <!--[if lt IE 9]>
-     <link rel="stylesheet" href="lib/leaflet/leaflet.ie.css"/>
-     <![endif]-->
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.ie.css" />
+    <![endif]-->
+
 </head>
+<script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
 <div class="row-fluid">
 
     <form class="form-horizontal span12">
@@ -65,16 +67,16 @@
 
                         <div class="controls">
                             <input type="text" id="wkt" name="wkt" value="<%= wkt %>"/>
-                            <!-- Taken from http://stackoverflow.com/questions/14299198/how-to-integrate-js-leaflet-with-backbone-js-->
-                            <script type='template' id='map-template'>
-                               <div id="map"></div>
-                            </script>
-                            <script src="../../lib/leaflet/leaflet-src.js"></script>
-                            <script src="../../lib/proj4js-compressed.js"></script>
-                            <script src="../../src/proj4leaflet.js"></script>
-                            <script src="http://www.mapuse.com/billing/Client/v1/Leaflet.js"></script>
                         </div>
                     </div>
+                    <div class="control-group">
+                        <label for="wkt" class="control-label">Map:</label>
+
+                        <div class="controls">
+                            <div id="map" style="width: 90%;"></div>
+                        </div>
+                    </div>
+
 
                     <div class="control-group">
                         <label for="year" class="control-label">Year:</label>
