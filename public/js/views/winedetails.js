@@ -18,7 +18,7 @@ window.WineView = Backbone.View.extend({
 var origin_CommunityBasemap = [-4020900, 19998100];
 var origin_WCCAerials = [-5099531.19635, 57089446.18];
 
-var resolutions_WCCAerials: [
+var resolutions_WCCAerials = [
             66.1459656252646,
             33.0729828126323,
             16.933367200067735,
@@ -30,7 +30,7 @@ var resolutions_WCCAerials: [
             0.26458386250105836,
             0.13229193125052918,
             0.06614596562526459
-        ]
+        ];
 
 var resolutions_CommunityBasemap = [
               4233.341800016934, 
@@ -77,7 +77,7 @@ var maxZoom_WCCAerials = 10;
     var tileUrl_CommunityBasemap = 'http://services.arcgisonline.co.nz/arcgis/rest/services/Generic/newzealand/MapServer/tile/{z}/{y}/{x}',
         attrib_CommunityBasemap = 'Eagle Technology Group Ltd And LINZ &copy; 2012',
 
-        tilelayer = new L.TileLayer(tileUrl_CommunityBasemapnityBasemap, {
+        tilelayer = new L.TileLayer(tileUrl_CommunityBasemap, {
             maxZoom: maxZoom_CommunityBasemap,
             minZoom: minZoom_CommunityBasemap,
             continuousWorld: true,
