@@ -59,8 +59,8 @@ var maxZoom_WCCAerials = 10;
     var crs = new L.Proj.CRS('EPSG:2193',
         '+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs',
         {
-            origin: origin_CommunityBasemap,
-            resolutions: resolutions_CommunityBasemap
+            origin: origin_WCCAerials,
+            resolutions: resolutions_WCCAerials
         });
 
 //    var map = L.map(this.$('#map')[0]).setView ([-41.289926, 174.775172], 16);
@@ -74,19 +74,22 @@ var maxZoom_WCCAerials = 10;
         worldCopyJump: false
     });
 
-    var tileUrl_CommunityBasemap = 'http://services.arcgisonline.co.nz/arcgis/rest/services/Generic/newzealand/MapServer/tile/{z}/{y}/{x}',
-        attrib_CommunityBasemap = 'Eagle Technology Group Ltd And LINZ &copy; 2012',
+    var tileUrl_CommunityBasemap = 'http://services.arcgisonline.co.nz/arcgis/rest/services/Generic/newzealand/MapServer/tile/{z}/{y}/{x}';
+    var tileUrl_WCCAerials = 'http://gis.wcc.govt.nz/arcgis/rest/services/Basemap/Aerial_Photo/MapServer/tile/{z}/{y}/{x}';
+    var attrib_CommunityBasemap = 'Eagle Technology Group Ltd And LINZ &copy; 2012';
+    var attrib_WCCAerials = 'Wellington City Council &copy; 2012';
 
-        tilelayer = new L.TileLayer(tileUrl_CommunityBasemap, {
-            maxZoom: maxZoom_CommunityBasemap,
-            minZoom: minZoom_CommunityBasemap,
+    var tilelayer = new L.TileLayer(tileUrl_WCCAerials, {
+            maxZoom: maxZoom_WCCAerials,
+            minZoom: minZoom_WCCAerials,
             continuousWorld: true,
-            attribution: attrib_CommunityBasemap,
+            attribution: attrib_WCCAerials,
+	    tileSize: 512,
             tms: false
         });
 
     map.addLayer(tilelayer);
-    map.setView([-41.289926, 174.775172], 16);
+    map.setView([-41.289926, 174.775172], 8);
 
     function onMapMouseMove(e) {
     //  console.log("xy: " + e.latlng);
