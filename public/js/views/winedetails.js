@@ -7,7 +7,7 @@ window.WineView = Backbone.View.extend({
     render: function () {
         $(this.el).html(this.template(this.model.toJSON()));
 
-
+var model = this.model;
 /*
     L.tileLayer('http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/100725/256/{z}/{x}/{y}.png', {
       attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>[.]',
@@ -91,14 +91,47 @@ var maxZoom_WCCAerials = 10;
     map.addLayer(tilelayer);
     map.setView([-41.289926, 174.775172], 8);
 
+
+    L.Icon.Default.imagePath = '../../lib/leaflet/images';
+    if(model.has('wkt'))
+    {
+        var marker = L.marker(model.get("wkt")).addTo(map);
+	map.panTo(model.get("wkt"));
+    }
+//map.locate({setView: true, maxZoom: 8});
+
     function onMapMouseMove(e) {
     //  console.log("xy: " + e.latlng);
     }
 
     map.on('mousemove', onMapMouseMove);
 
+//var popup = L.popup();
+function onMapClick(e) {
+var marker = L.marker(e.latlng).addTo(map);
+model.set("wkt",  e.latlng);
+//model.set("wkt",  e.latlng.lat + ', ' + e.latlng.lng);
+//        .setLatLng(e.latlng)
+//        .setContent("You clicked the map at " + e.latlng.toString())
+//        .openOn(map);
+//	.addTo(map);
+}
 
 
+map.on('click', onMapClick);
+/*
+function onLocationFound(e) {
+    var radius = e.accuracy / 2;
+
+
+    L.marker(e.latlng).addTo(map)
+        .bindPopup("You are within " + radius + " meters from this point").openPopup();
+
+    L.circle(e.latlng, radius).addTo(map);
+}
+
+map.on('locationfound', onLocationFound);
+*/
 
 
 
