@@ -15,11 +15,7 @@ window.WineView = Backbone.View.extend({
     }).addTo(map);
 */
 
-    var crs = new L.Proj.CRS('EPSG:2193',
-        '+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs',
-        {
-            origin: [-4020900, 19998100],
-            resolutions: [
+var resolutions_CommunityBasemap = [
               4233.341800016934, 
               2116.670900008467, 
               1587.5031750063501, 
@@ -36,7 +32,13 @@ window.WineView = Backbone.View.extend({
                  2.6458386250105836,
                  1.3229193125052918,
                  0.6614596562526459
-            ]
+            ];
+
+    var crs = new L.Proj.CRS('EPSG:2193',
+        '+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs',
+        {
+            origin: [-4020900, 19998100],
+            resolutions: resolutions_CommunityBasemap
         });
 
 //    var map = L.map(this.$('#map')[0]).setView ([-41.289926, 174.775172], 16);
@@ -50,10 +52,10 @@ window.WineView = Backbone.View.extend({
         worldCopyJump: false
     });
 
-    var tileUrl = 'http://services.arcgisonline.co.nz/arcgis/rest/services/Generic/newzealand/MapServer/tile/{z}/{y}/{x}',
+    var tileUrlCommunityBasemap = 'http://services.arcgisonline.co.nz/arcgis/rest/services/Generic/newzealand/MapServer/tile/{z}/{y}/{x}',
         attrib = 'Eagle Technology Group Ltd And LINZ &copy; 2012',
 
-        tilelayer = new L.TileLayer(tileUrl, {
+        tilelayer = new L.TileLayer(tileUrlCommunityBasemap, {
             maxZoom: 15,
             minZoom: 0,
             continuousWorld: true,
